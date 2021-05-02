@@ -47,7 +47,8 @@ No headers required
 |-----|--------|
 |firstName| firstname of the user
 |name| name of the user
-|phoneNumber| phonenumber of the user
+|email| email address of the user, to be unique
+|phoneNumber| phonenumber of the user, to be unique
 |password| password of the user
 |isAgent| A boolean to know if the user is registered as an advertiser or not. Defaults to `false`
 
@@ -64,7 +65,8 @@ var headers = {
 };
 var request = http.Request('POST', Uri.parse('https://realtys-api.herokuapp.com/api/realtys/login'));
 request.bodyFields = {
-  'login': 'adelaboukiss@gmail.com'
+  'login': 'adelaboukiss@gmail.com',
+  'password': 'avatarimdad96'
 };
 request.headers.addAll(headers);
 
@@ -77,3 +79,33 @@ else {
   print(response.reasonPhrase);
 }
 ```
+> This is the response we should get:
+
+```json
+{
+    "userId": "608e4fe0c1d1a40015903bfc",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDhlNGZlMGMxZDFhNDAwMTU5MDNiZmMiLCJpYXQiOjE2MTk5NDEzMDIsImV4cCI6MTYyMDAyNzcwMn0.5r76IQqwVS7hpL_o1esnMULiGBoPOPSRxxkgz2QWpU0"
+}
+```
+
+### Request Information
+|Category|Value|
+|--------|------|
+|Http request| `POST`|
+|URL| https://realtys-api.herokuapp.com/api/realtys/login|
+
+### Headers
+No headers required
+
+### Input Schema for requests
+|Field|Meaning|
+|-----|--------|
+|login| user login information, can be connected by email or phone number|
+|password| password of the user|
+
+### Output Schema for requests
+|Field|Meaning|
+|-----|--------|
+|userId| id of user, Use to get information about a user from the database|
+|token| A token for security reasons, contains the id of the client in playloads.|
+
