@@ -5,7 +5,7 @@
 var headers = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
-var request = http.Request('POST', Uri.parse('https://realtys-api.herokuapp.com/api/realtys/signUp'));
+var request = http.Request('POST', Uri.parse('https://realtys-api.herokuapp.com/api/realtys/sign-up'));
 request.bodyFields = {
   'firstName': 'Adelabou',
   'name': 'imdad',
@@ -37,7 +37,7 @@ else {
 |Category|Value|
 |---------|--------|
 |Http request| `POST`|
-|URL|https://realtys-api.herokuapp.com/api/realtys/signUp|
+|URL|https://realtys-api.herokuapp.com/api/realtys/sign-up|
 
 ### Headers
 No headers required
@@ -115,7 +115,7 @@ No headers required
 var headers = {
   'Content-Type': 'application/x-www-form-urlencoded'
 };
-var request = http.Request('POST', Uri.parse('https://realtys-api.herokuapp.com/api/realtys/verificationEmail'));
+var request = http.Request('POST', Uri.parse('https://realtys-api.herokuapp.com/api/realtys/verification-email'));
 request.bodyFields = {
   'email': 'junior.medehou00@gmail.com',
   'code': '4bd31c'
@@ -144,7 +144,7 @@ else {
 |Category|Value|
 |--------|------|
 |Http request| `POST`|
-|URL| https://realtys-api.herokuapp.com/api/realtys/verificationEmail|
+|URL| https://realtys-api.herokuapp.com/api/realtys/verification-email|
 
 ### Headers
 No headers required
@@ -160,3 +160,14 @@ No headers required
 |-----|--------|
 |status| return `200`, if the correct password is entered by the user|
 |msg| The result of request|
+
+# Code Error
+
+## Meaning Code Error
+
+###
+|Code|Meaning|
+|----|--------|
+|500| Internal Error|
+|200, 201| Request finished successfully|
+|400, 401| Unauthorized and finished with error in `err` object|
