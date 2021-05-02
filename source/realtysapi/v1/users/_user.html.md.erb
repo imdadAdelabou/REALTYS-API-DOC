@@ -1,0 +1,79 @@
+# User Module
+
+## Register a new user
+```dart
+var headers = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+var request = http.Request('POST', Uri.parse('https://realtys-api.herokuapp.com/api/realtys/signUp'));
+request.bodyFields = {
+  'firstName': 'Adelabou',
+  'name': 'imdad',
+  'email': 'adelaboukiss@gmail.com',
+  'phoneNumber': '97018954',
+  'password': 'avatarimdad96',
+  'isAgent': 'true'
+};
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+> This is the response we should get:
+
+```json
+{
+    "msg": "user created well"
+}
+```
+
+### Request Information
+|Category|Value|
+|---------|--------|
+|Http request| `POST`|
+|URL|https://realtys-api.herokuapp.com/api/realtys/signUp|
+
+### Headers
+No headers required
+
+### Input Schema for requests
+|Field|Meaning|
+|-----|--------|
+|firstName| firstname of the user
+|name| name of the user
+|phoneNumber| phonenumber of the user
+|password| password of the user
+|isAgent| A boolean to know if the user is registered as an advertiser or not. Defaults to `false`
+
+### Output Schema of request
+|Field|Meaning|
+|-----|--------|
+|status| return `201` if the user has registered|
+|msg| The result of the request|
+
+## Login a user
+```dart
+var headers = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+var request = http.Request('POST', Uri.parse('https://realtys-api.herokuapp.com/api/realtys/login'));
+request.bodyFields = {
+  'login': 'adelaboukiss@gmail.com'
+};
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
